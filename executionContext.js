@@ -1,0 +1,428 @@
+/**
+ * SuiteScript Execution Context APIs
+ *
+ * Context APIs are used to get system information or metadata about a script that is running,
+ *  a user in a NetSuite account, or certain settings that have been applied to account.
+ */
+
+
+/**
+ * Return context information about the current user/script
+ *
+ * @return {nlobjContext}
+ * @since 2007.0
+ */
+function nlapiGetContext() {
+}
+
+/**
+ * Return the internal ID for the currently logged in user.
+ * Returns -4 when called from online forms or "Available without Login" Suitelets
+ *
+ * @return {int}
+ * @since 2005.0
+ */
+function nlapiGetUser() {
+}
+
+/**
+ * Return the internal ID for the current user's role.
+ * Returns 31 (Online Form User) when called from online forms or "Available without Login" Suitelets
+ *
+ * @return {int}
+ * @since 2005.0
+ */
+function nlapiGetRole() {
+}
+
+/**
+ * Return the internal ID for the current user's department
+ *
+ * @return {int}
+ * @since 2005.0
+ */
+function nlapiGetDepartment() {
+}
+
+/**
+ * Return the internal ID for the current user's location
+ *
+ * @return {int}
+ * @since 2005.0
+ */
+function nlapiGetLocation() {
+}
+
+/**
+ * Return the internal ID for the current user's subsidiary
+ *
+ * @return {int}
+ * @since 2008.1
+ */
+function nlapiGetSubsidiary() {
+}
+
+/**
+ * Create an entry in the script execution log (note that execution log entries are automatically purged after 30 days)
+ *
+ * @param {string} type One of the following log types:
+ *                      • DEBUG
+ *                      • AUDIT
+ *                      • ERROR
+ *                      • EMERGENCY
+ * @param {string} title log title (up to 90 characters supported)
+ * @param {string} [details] log details (up to 3000 characters supported)
+ *
+ * @return {void}
+ * @since 2008.1
+ */
+function nlapiLogExecution(type, title, details) {
+}
+
+/**
+ * Utility class providing information about the current user and the script runtime
+ * Return a new instance of nlobjContext used for user and script context information
+ *
+ * @constructor
+ */
+function nlobjContext() {
+}
+
+/**
+ * Return the name of the current user
+ *
+ * @return {string}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getName = function() {
+};
+
+/**
+ * Return the internalId of the current user
+ *
+ * @return {string}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getUser = function() {
+};
+
+/**
+ * Return the internalId of the current user's role
+ *
+ * @return {string}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getRole = function() {
+};
+
+/**
+ * Return the script ID of the current user's role
+ *
+ * @return {string}
+ * @since 2008.2
+ */
+nlobjContext.prototype.getRoleId = function() {
+};
+
+/**
+ * Return the internalId of the current user's center type
+ *
+ * @return {string}
+ * @since 2008.2
+ */
+nlobjContext.prototype.getRoleCenter = function() {
+};
+
+/**
+ * Return the email address of the current user
+ *
+ * @return {string}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getEmail = function() {
+};
+
+/**
+ * Return the internal ID of the contact logged in on behalf of a customer, vendor, or partner
+ * It returns -1 for non-contact logins
+ *
+ * @return {int}
+ * @since 2009.1
+ */
+nlobjContext.prototype.getContact = function() {
+};
+
+/**
+ * Return the account ID of the current user
+ *
+ * @return {string}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getCompany = function() {
+};
+
+/**
+ * Return the internalId of the current user's department
+ *
+ * @return {int}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getDepartment = function() {
+};
+
+/**
+ * Return the internalId of the current user's location
+ *
+ * @return {int}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getLocation = function() {
+};
+
+/**
+ * Return the internalId of the current user's subsidiary
+ *
+ * @return {int}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getSubsidiary = function() {
+};
+
+/**
+ * Return the execution context for this script, one of:
+ *      • userinterface - Client SuiteScript or user event triggers invoked from the UI
+ *      • webservices - User event triggers invoked from webservice calls
+ *      • csvimport - User event triggers invoked during CSV imports
+ *      • smbxml - User event triggers invoked during SMBXML calls
+ *      • portlet - Portlet script or user event triggers invoked via portlet scripts
+ *      • scheduled - Scheduled script or user event triggers invoked via scheduled scripts
+ *      • suitelet - Suitelet or user event triggers invoked via suitelets
+ *      • custommassupdate - Mass update script triggers invoked via custom Mass Update scripts
+ *      • workflow - Workflow action script triggers invoked via Workflow Action scripts
+ *      • webstore - User event triggers invoked from the web store (for example to determine if sales
+ *                      orders or customers were created in the web store).
+ *      • userevent - This context type represents cases in which records are generated in the backend
+ *                      (as opposed to being generated by the UI). For example, the 'userevent' context
+ *                      distinguishes the case wherein a Bill Payment is submitted as part of a non- record page.
+ *                      Whereas the 'userinterface' context identifies when a single Bill Payement record
+ *                      is submitted from the UI.
+ *
+ * @return {string}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getExecutionContext = function() {
+};
+
+/**
+ * Return the amount of usage units remaining for this script
+ *
+ * @return {int}
+ * @since 2007.0
+ */
+nlobjContext.prototype.getRemainingUsage = function() {
+};
+
+/**
+ * Return true if feature is enabled, false otherwise
+ *
+ * @param {string} name
+ *
+ * @return {boolean} Returns true if a feature is enabled in the current account
+ * @since 2009.2
+ */
+nlobjContext.prototype.getFeature = function(name) {
+};
+
+/**
+ * Return current user's permission level (0-4) for this permission
+ *
+ * @param {string} name
+ *
+ * @return {int}
+ * @since 2009.2
+ */
+nlobjContext.prototype.getPermission = function(name) {
+};
+
+/**
+ * Return system or script preference selection for current user
+ *
+ * @param {string} name
+ *
+ * @return {string}
+ * @since 2009.2
+ */
+nlobjContext.prototype.getPreference = function(name) {
+};
+
+/**
+ * Return value of session object set by script
+ *
+ * @param {string} name
+ *
+ * @return {string}
+ * @since 2009.2
+ */
+nlobjContext.prototype.getSessionObject = function(name) {
+};
+
+/**
+ * Set the value of a session object using a key
+ *
+ * @param {string} name
+ * @param {string} value
+ *
+ * @return {void}
+ * @since 2009.2
+ */
+nlobjContext.prototype.setSessionObject = function(name, value) {
+};
+
+/**
+ * Return an array containing the names of all keys used to set session objects
+ *
+ * @return {string[]}
+ * @since 2009.2
+ */
+nlobjContext.prototype.getAllSessionObjects = function() {
+};
+
+/**
+ * Return the NetSuite version for the current account
+ *
+ * @return {string}
+ * @since 2009.2
+ */
+nlobjContext.prototype.getVersion = function() {
+};
+
+/**
+ * @return {string} The environment that the script is executing in: SANDBOX, PRODUCTION, BETA, INTERNAL
+ * @since 2008.2
+ */
+nlobjContext.prototype.getEnvironment = function() {
+};
+
+/**
+ * Return the logging level for the current script execution. Not supported in CLIENT scripts
+ *
+ * @return {string}
+ * @since 2008.2
+ */
+nlobjContext.prototype.getLogLevel = function() {
+};
+
+/**
+ * Return the script ID for the current script
+ *
+ * @return {string}
+ * @since 2009.2
+ */
+nlobjContext.prototype.getScriptId = function() {
+};
+
+/**
+ * Return the deployment ID for the current script
+ *
+ * @return {string}
+ * @since 2009.2
+ */
+nlobjContext.prototype.getDeploymentId = function() {
+};
+
+/**
+ * Return the % complete specified for the current scheduled script execution
+ *
+ * @return {int}
+ * @since 2009.2
+ */
+nlobjContext.prototype.getPercentComplete = function() {
+};
+
+/**
+ * Set the % complete for the current scheduled script execution
+ *
+ * @param {number} percent the percentage of records completed
+ * @return {void}
+ * @since 2009.2
+ */
+nlobjContext.prototype.setPercentComplete = function(percent) {
+};
+
+/**
+ * Return a system/script setting. Types are SCRIPT, SESSION, FEATURE, PERMISSION
+ *
+ * Note that if you want to get session, feature, or permission settings directly,
+ * this method should be considered deprecated, use getFeature(), getPermission() or getSessionObject instead
+ *
+ * @param {string} type
+ * @param {string} name
+ *
+ * @return {string|int} If type is specified as SCRIPT, SESSION, or FEATURE, a string value is returned
+ *                          If type is specified as PERMISSION, an integer value is returned
+ * @since 2007.0
+ * @see getFeature
+ * @see getPermission
+ * @see getSessionObject
+ */
+nlobjContext.prototype.getSetting = function(type, name) {
+};
+
+/**
+ * Set a system/script setting. Only supported type is SESSION
+ *
+ * @param {string} type
+ * @param {string} name
+ * @param {string} value
+ *
+ * @return {void}
+ * @since 2007.0
+ * @see setSessionObject
+ * @deprecated Use setSessionObject() instead
+ */
+nlobjContext.prototype.setSetting = function(type, name, value) {
+};
+
+/**
+ * Return an Object containing name/value pairs of color groups to their corresponding
+ *  RGB hex color based on the currently logged in user's color them preferences.
+ *
+ * Note: NetSuite color themes are read-only.
+ *
+ * The following table provides the names of available NetSuite color theme attributes
+ *      and a description of what each attribute affects.
+ *
+ *      Attribute               Description
+ *    -----------------------|---------------------------------------------------------------------
+ *      buttonbackground        Background color of colored buttons
+ *      text                    Text color for all text on the page body
+ *      portlet                 Portlet trim (header background) color
+ *      portletlabel            Text in portlet heading
+ *      crumbtext               Text color of breadcrumbs on the header bar (color may be synthesized by page looks)
+ *      inactivetab             Inactive tab color
+ *      link                    Text color for all links on the page bodySuiteScript Objects
+ *      backgroundrequiredfld   Background color for required fields in entry forms
+ *      inactivetextontab       Text color on the inactive tab
+ *      textontab               Text color on the active tab
+ *      bodybackground          Page background color
+ *      headbackground          Page header area background color
+ *      shadedbackground        Shaded area background color
+ *      headerbar               Header bar color
+ *      shadedborder            Border/header color around shaded areas
+ *      activetab               Active tab color
+ *
+ * @return {Object}
+ * @since 2010.1
+ * @deprecated 2014.2
+ */
+nlobjContext.prototype.getColorPreferences = function() {
+};
+
+/**
+ * Return the runtime version of SuiteScript, could be 1.0 or 2.0
+ *
+ * @return {Object}
+ * @since 2014.1
+ */
+nlobjContext.prototype.getRuntimeVersion = function() {
+};
